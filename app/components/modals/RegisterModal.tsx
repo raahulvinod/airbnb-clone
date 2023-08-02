@@ -10,7 +10,7 @@ import useRegisterModal from '@/app/hooks/useRegisterModal';
 import Modal from './Modal';
 import Heading from '../Heading';
 import Input from '../inputs/Input';
-import { toast } from 'react-hot-toast/headless';
+import toast from 'react-hot-toast';
 import { Button } from '../Button';
 
 const RegisterModal = () => {
