@@ -1,6 +1,7 @@
 'use client';
 
 import axios from 'axios';
+import { Range } from 'react-date-range';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Reservation } from '@prisma/client';
@@ -54,7 +55,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
 
   const [isLoading, setisLoading] = useState(false);
   const [totalPrice, setTotalPrice] = useState(listing.price);
-  const [dateRange, setDateRange] = useState(initialDateRange);
+  const [dateRange, setDateRange] = useState<Range>(initialDateRange);
 
   const onCreateReservation = useCallback(() => {
     if (!currentUser) {
