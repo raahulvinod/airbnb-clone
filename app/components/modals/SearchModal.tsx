@@ -12,6 +12,7 @@ import Heading from '../Heading';
 import Modal from './Modal';
 import dynamic from 'next/dynamic';
 import CountrySelect, { CountrySelectValue } from '../inputs/CountrySelect';
+import Calender from '../inputs/Calender';
 
 enum STEPS {
   LOCATION = 0,
@@ -133,13 +134,29 @@ const SearchModal = () => {
     </div>
   );
 
+  if (step === STEPS.DATE) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="When do you plan to go?"
+          subTitle="Make sure everyone is free!"
+        />
+        <Calender
+          value={dateRange}
+          onChange={(value) => setDateRange(value.selection)}
+        />
+      </div>
+    );
+  }
   return (
     <Modal
       isOpen={searchModal.isOpen}
       onClose={searchModal.onClose}
-      onSubmit={searchModal.onOpen}
+      onSubmit={onSubmit}
       title="Filters"
-      actionLabel="Search"
+      actionLabel={actionLabel}
+      secondaryActionLabel={secondaryActionLabel}
+      secondaryAction={step === STEPS.LOCATION ? undefined : onBack}
       body={bodyContent}
     />
   );
