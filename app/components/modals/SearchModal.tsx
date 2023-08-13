@@ -13,6 +13,7 @@ import Modal from './Modal';
 import dynamic from 'next/dynamic';
 import CountrySelect, { CountrySelectValue } from '../inputs/CountrySelect';
 import Calender from '../inputs/Calender';
+import Counter from '../inputs/Counter';
 
 enum STEPS {
   LOCATION = 0,
@@ -144,6 +145,32 @@ const SearchModal = () => {
         <Calender
           value={dateRange}
           onChange={(value) => setDateRange(value.selection)}
+        />
+      </div>
+    );
+  }
+
+  if (step === STEPS.INFO) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading title="More Information" subTitle="Find your perfect place!" />
+        <Counter
+          title="Guests"
+          subtitle="How many guests are coming?"
+          value={guestCount}
+          onChange={(value) => setGuestCount(value)}
+        />
+        <Counter
+          title="Rooms"
+          subtitle="How many rooms do you need?"
+          value={roomCount}
+          onChange={(value) => setRoomCount(value)}
+        />
+        <Counter
+          title="Bathrooms"
+          subtitle="How many bathrooms do you need?"
+          value={bathroomCount}
+          onChange={(value) => setBathroomCount(value)}
         />
       </div>
     );
